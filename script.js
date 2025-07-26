@@ -13,8 +13,6 @@ const elements = {
   navMenu: document.querySelector(".nav-menu"),
   navLinks: document.querySelectorAll(".nav-link"),
   themeToggle: document.querySelector(".theme-toggle"),
-  cursor: document.querySelector(".cursor"),
-  cursorFollower: document.querySelector(".cursor-follower"),
   typingText: document.querySelector(".typing-text"),
   contactForm: document.querySelector(".contact-form"),
   skillBars: document.querySelectorAll(".progress-bar"),
@@ -44,41 +42,6 @@ class Loader {
     new ScrollAnimations()
     new SkillBars()
     new CounterAnimation()
-  }
-}
-
-// ===== CURSOR PERSONALIZADO =====
-class CustomCursor {
-  constructor() {
-    this.init()
-  }
-
-  init() {
-    if (!elements.cursor || !elements.cursorFollower) return
-
-    document.addEventListener("mousemove", (e) => {
-      elements.cursor.style.left = e.clientX + "px"
-      elements.cursor.style.top = e.clientY + "px"
-
-      setTimeout(() => {
-        elements.cursorFollower.style.left = e.clientX + "px"
-        elements.cursorFollower.style.top = e.clientY + "px"
-      }, 100)
-    })
-
-    // Efeitos hover
-    const hoverElements = document.querySelectorAll("a, button, .btn, .skill-card, .social-link")
-    hoverElements.forEach((el) => {
-      el.addEventListener("mouseenter", () => {
-        elements.cursor.style.transform = "scale(1.5)"
-        elements.cursorFollower.style.transform = "scale(1.5)"
-      })
-
-      el.addEventListener("mouseleave", () => {
-        elements.cursor.style.transform = "scale(1)"
-        elements.cursorFollower.style.transform = "scale(1)"
-      })
-    })
   }
 }
 
@@ -501,7 +464,6 @@ class TimelineAnimation {
 document.addEventListener("DOMContentLoaded", () => {
   // Inicializar todas as classes
   new Loader()
-  new CustomCursor()
   new MobileNavigation()
   new ThemeToggle()
   new ContactForm()
